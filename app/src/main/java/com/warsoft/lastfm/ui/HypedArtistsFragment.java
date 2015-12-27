@@ -45,7 +45,7 @@ public class HypedArtistsFragment extends Fragment {
     private void setupArtistsList() {
         mHypedArtistList.setLayoutManager(new GridLayoutManager(getActivity(), NUM_COLUMS));
         mHypedArtistList.setAdapter(adapter);
-
+mHypedArtistList.addItemDecoration(new ItemOffsetDecoration(getActivity(),R.integer.offset));
     }
 
     // creamos contenido a el azar

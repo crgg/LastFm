@@ -306,6 +306,9 @@
     <!-- From: file:/C:/Users/ander/Documents/LastFm/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="design_snackbar_text_max_lines">2</integer>
+    <!-- From: file:/C:/Users/ander/Documents/LastFm/app/src/main/res/values/integers.xml -->
+    <eat-comment/>
+    <integer name="offset">8</integer>
     <!-- From: file:/C:/Users/ander/Documents/LastFm/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="status_bar_notification_info_maxnum">999</integer>
