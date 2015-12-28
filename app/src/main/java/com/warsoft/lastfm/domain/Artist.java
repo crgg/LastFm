@@ -13,6 +13,9 @@ public class Artist {
     String urlLargeImage;
     String urlMediumImage;
 
+    public Artist() {
+    }
+
     public Artist(String name) {
         this.name = name;
     }

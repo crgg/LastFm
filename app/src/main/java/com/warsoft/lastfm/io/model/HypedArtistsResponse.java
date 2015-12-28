@@ -14,12 +14,17 @@ public class HypedArtistsResponse {
 @SerializedName(JsonKeys.ARTISTS_RESULTS)
     HypedArtistsResult result;
 
+    public void setArtist(ArrayList<Artist> artist){
+        this.result.artists= artist;
+    }
+
+
     public ArrayList<Artist> getArtists(){
         return result.artists;
     }
 
 private class HypedArtistsResult{
-@SerializedName(JsonKeys.ARTISTS_ARRAY)
+
     ArrayList<Artist> artists;
 }
 

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.warsoft.lastfm.R;
 import com.warsoft.lastfm.domain.Artist;
 
@@ -40,6 +41,12 @@ ArrayList<Artist> artists;
     public void onBindViewHolder(HypedArtistViewHolder holder, int position) {
 Artist currentArtist = artists.get(position);
         holder.setArtistName(currentArtist.getName());
+        if (currentArtist.getUrlLargeImage()!=null){
+            holder.setArtistImage(currentArtist.getUrlMediumImage());
+        }else {
+            holder.setDafaultImage();
+        }
+
     }
 
     @Override
@@ -68,6 +75,19 @@ Artist currentArtist = artists.get(position);
 
         public void setArtistName(String name){
             artistName.setText(name);
+        }
+
+        public void setArtistImage(String url){
+            Picasso.with(context)
+                    .load(url)
+                    .placeholder(R.drawable.artist_placeholder)
+                    .into(artistImage);
+        }
+
+        public void setDafaultImage(){
+            Picasso.with(context)
+                    .load(R.drawable.artist_placeholder)
+                    .into(artistImage);
         }
 }
 
