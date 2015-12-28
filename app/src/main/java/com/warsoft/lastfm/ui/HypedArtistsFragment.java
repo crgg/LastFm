@@ -12,14 +12,23 @@ import android.view.ViewGroup;
 
 import com.warsoft.lastfm.R;
 import com.warsoft.lastfm.domain.Artist;
+import com.warsoft.lastfm.io.LastFmApiAdapter;
+import com.warsoft.lastfm.io.LastFmApiService;
+import com.warsoft.lastfm.io.model.HypedArtistsResponse;
 import com.warsoft.lastfm.ui.adapter.HypedArtistsAdapter;
 
 import java.util.ArrayList;
 
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+import rx.android.schedulers.AndroidSchedulers;
+
 /**
  * Created by ander on 26/12/2015.
  */
-public class HypedArtistsFragment extends Fragment {
+public class HypedArtistsFragment extends Fragment  {
     public static final String LOG_TAG = HypedArtistsFragment.class.getName();
     public static final int NUM_COLUMS = 2;
     private RecyclerView mHypedArtistList;
@@ -38,24 +47,38 @@ public class HypedArtistsFragment extends Fragment {
         mHypedArtistList = (RecyclerView) root.findViewById(R.id.hyped_artists_list);
         //inicializamos los metodos para no generar exepciones
         setupArtistsList();
-        setDummyContent();
+
         return root;
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Asynchronous Call in Retrofit 2.0
+
+        Call<HypedArtistsResponse> call = LastFmApiAdapter.getApiService().getHypedArtists();
+        call.enqueue(new Callback<HypedArtistsResponse>() {
+            @Override
+            public void onResponse(Response<HypedArtistsResponse> response, Retrofit retrofit) {
+                adapter.addAll(response.body().getArtists());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+t.printStackTrace();
+            }
+        });
+
+    }
+
 
     private void setupArtistsList() {
         mHypedArtistList.setLayoutManager(new GridLayoutManager(getActivity(), NUM_COLUMS));
         mHypedArtistList.setAdapter(adapter);
-mHypedArtistList.addItemDecoration(new ItemOffsetDecoration(getActivity(),R.integer.offset));
+        mHypedArtistList.addItemDecoration(new ItemOffsetDecoration(getActivity(), R.integer.offset));
     }
 
-    // creamos contenido a el azar
 
-    private void setDummyContent() {
-        ArrayList<Artist> artists = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            artists.add(new Artist("artista" + i));
-        }
-        adapter.addAll(artists);
-    }
 
 }

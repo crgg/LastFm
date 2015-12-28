@@ -13,6 +13,10 @@ ADDED from C:\Users\ander\Documents\LastFm\app\src\main\AndroidManifest.xml:2:1-
 	android:versionCode
 		INJECTED from C:\Users\ander\Documents\LastFm\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\ander\Documents\LastFm\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\ander\Documents\LastFm\app\src\main\AndroidManifest.xml:4:1-79
+	android:name
+		ADDED from C:\Users\ander\Documents\LastFm\app\src\main\AndroidManifest.xml:4:18-60
 application
 ADDED from C:\Users\ander\Documents\LastFm\app\src\main\AndroidManifest.xml:5:5-21:19
 MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\ander\Documents\LastFm\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\AndroidManifest.xml:22:5-20
